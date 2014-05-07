@@ -1,0 +1,16 @@
+{
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "immed": true,
+    "newcap": true,
+    "noarg": true,
+    "noempty": true,
+    "undef": true,
+    "latedef": "nofunc",
+    "unused": "vars",
+    "browser": true,
+    "node": true
+}
