@@ -47,7 +47,7 @@ var routes = [
         id: 'route_with_required_string_parameter',
         path: '/i/{parameter}',
         defaults: {action: 'defaultAction'},
-        requirements: {parameter: "\\w+"}
+        requirements: {parameter: "[a-z]+"}
     },
     {
         id: 'route_with_not_required_numeric_parameter',
@@ -79,9 +79,6 @@ routes.push(
             clone.id = 'prefixed_with_locale_' + route.id;
             return clone;
         }),
-        defaults: {
-            locale: 'en'
-        },
         requirements: {
             locale: 'en|ru'
         }

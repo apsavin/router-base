@@ -11,32 +11,7 @@ vows.describe('router').addBatch({
                 routes: routes
             });
         },
-        'match method': checkMatchMethod(routes, [
-            [
-                [
-                    {path: '/a/route', method: 'GET'},
-                    {id: 'simplest_route'}
-                ],
-                [
-                    {path: '/a/rote', method: 'GET'},
-                    null
-                ]
-            ],
-            [
-                {path: '/b/route', method: 'GET'},
-                {id: 'simplest_route_with_default_parameter', parameters: {action: 'defaultAction'}}
-            ],
-            [
-                [
-                    {path: '/c/5', method: 'GET'},
-                    {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5}}
-                ],
-                [
-                    {path: '/c', method: 'GET'},
-                    null
-                ]
-            ]
-        ]),
+        'match method': checkMatchMethod(routes, require('./match-data')),
         'generate method': checkGenerateMethod(routes, [
             [
                 {id: 'simplest_route'},
@@ -89,7 +64,14 @@ function checkMethod (routes, parameters, methodTestGenerator) {
     }
 
     parameters.forEach(function (parameter, i) {
-        route = routes[i];
+        var routesCount = routes.length - 2;
+        if (i < routesCount) {
+            route = routes[i];
+        } else if (i < routesCount * 2) {
+            route = routes[routesCount].routes[i - routesCount];
+        } else {
+            route = routes[routesCount + 1].routes[i - routesCount * 2];
+        }
         id = 0;
         generateMethod(parameter);
     });
