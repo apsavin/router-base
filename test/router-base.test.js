@@ -12,12 +12,7 @@ vows.describe('router').addBatch({
             });
         },
         'match method': checkMatchMethod(routes, require('./match-data')),
-        'generate method': checkGenerateMethod(routes, [
-            [
-                {id: 'simplest_route'},
-                '/a/route'
-            ]
-        ])
+        'generate method': checkGenerateMethod(routes, require('./generate-data'))
     }
 }).export(module);
 
@@ -93,7 +88,15 @@ function checkMatchMethod (routes, parameters) {
  */
 function checkGenerateRoute (input, output) {
     return function (router) {
-        assert.equal(router.generate(input.id, input.parameters), output);
+        try {
+            assert.equal(router.generate(input.id, input.parameters), output);
+        } catch (e) {
+            if (e.name === 'AssertionError') {
+                throw e;
+            } else {
+                assert.strictEqual(output, undefined);
+            }
+        }
     };
 }
 
