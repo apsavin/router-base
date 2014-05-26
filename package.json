@@ -2,6 +2,7 @@
     "name": "router",
     "version": "0.0.0",
     "description": "javascript abstract, node.js and client-side router",
+    "main" : "./lib/router-base.js",
     "scripts": {
         "test": "node ./node_modules/.bin/vows --spec"
     },
@@ -10,7 +11,7 @@
     ],
     "author": "Alexander Savin",
     "license": "MIT",
-    "dependencies": {
+    "devDependencies": {
         "vows": "^0.7.0",
         "lodash.clonedeep": "^2.4.1"
     }
