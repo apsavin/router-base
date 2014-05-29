@@ -1,15 +1,25 @@
 {
     "name": "router",
-    "version": "0.0.0",
-    "description": "javascript abstract, node.js and client-side router",
-    "main" : "./lib/router-base.js",
+    "version": "0.0.1",
+    "engines": {
+        "node": ">=0.10"
+    },
+    "author": "Alexander Savin",
+    "main": "./lib/router-base.js",
+    "description": "javascript abstract, node.js and client-side router, inspired by symfony router",
+    "bugs": {
+        "url": "https://github.com/apsavin/router-base/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/apsavin/router-base.git"
+    },
     "scripts": {
         "test": "node ./node_modules/.bin/vows --spec"
     },
     "keywords": [
-        "router"
+        "router", "abstract", "symfony"
     ],
-    "author": "Alexander Savin",
     "license": "MIT",
     "devDependencies": {
         "vows": "^0.7.0",

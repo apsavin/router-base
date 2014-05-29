@@ -54,6 +54,13 @@ var routes = [
         path: '/k/{parameter}',
         defaults: {action: 'defaultAction', parameter: 0},
         requirements: {parameter: "\\d+"}
+    },
+    {
+        id: 'route_with_host',
+        path: '/a',
+        host: '{sub}.example.com',
+        defaults: {sub: 'm'},
+        requirements: {sub: 'm|mobile'}
     }
 ];
 

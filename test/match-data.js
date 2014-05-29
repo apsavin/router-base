@@ -104,6 +104,20 @@ var data = [
             {path: '/k/sdf', method: 'GET'},
             null
         ]
+    ],
+    [
+        [
+            {path: '/a', method: 'GET', host: 'm.example.com'},
+            {id: 'route_with_host', parameters: {sub: 'm'}}
+        ],
+        [
+            {path: '/a', method: 'GET'},
+            null
+        ],
+        [
+            {path: '/a', method: 'GET', host: 'null.example.com'},
+            null
+        ]
     ]
 ];
 
@@ -115,7 +129,8 @@ module.exports = data
         return [
             {
                 path: '/prefixed' + data[0].path,
-                method: data[0].method
+                method: data[0].method,
+                host: data[0].host
             },
             data[1] ? {
                 id: 'prefixed_' + data[1].id,
@@ -141,7 +156,8 @@ module.exports = data
             prefixedData.push([
                 {
                     path: correctSample[0].path.replace('/en/', '/ru/'),
-                    method: correctSample[0].method
+                    method: correctSample[0].method,
+                    host: correctSample[0].host
                 },
                 {
                     id: correctSample[1].id,
@@ -151,7 +167,8 @@ module.exports = data
             prefixedData.push([
                 {
                     path: correctSample[0].path.replace('/en/', '/null/'),
-                    method: correctSample[0].method
+                    method: correctSample[0].method,
+                    host: correctSample[0].host
                 },
                 null
             ]);
@@ -172,7 +189,8 @@ module.exports = data
         return [
             {
                 path: '/en' + data[0].path,
-                method: data[0].method
+                method: data[0].method,
+                host: data[0].host
             },
             data[1] ? {
                 id: 'prefixed_with_locale_' + data[1].id,
