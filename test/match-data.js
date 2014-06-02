@@ -5,6 +5,10 @@ var data = [
             {id: 'simplest_route'}
         ],
         [
+            {path: '/a/route?param=value', method: 'GET'},
+            {id: 'simplest_route', parameters: {param: 'value'}}
+        ],
+        [
             {path: '/a/rote', method: 'GET'},
             null
         ]
@@ -17,6 +21,14 @@ var data = [
         [
             {path: '/c/5', method: 'GET'},
             {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5}}
+        ],
+        [
+            {path: '/c/5?d=6', method: 'GET'},
+            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5, d: 6}}
+        ],
+        [
+            {path: '/c/5?d=6&parameter=7', method: 'GET'},
+            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5, d: 6}}
         ],
         [
             {path: '/c/5', method: 'POST'},
