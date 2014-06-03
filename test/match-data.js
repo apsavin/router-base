@@ -9,6 +9,14 @@ var data = [
             {id: 'simplest_route', parameters: {param: 'value'}}
         ],
         [
+            {path: '/a/route', method: 'GET', scheme: 'http'},
+            {id: 'simplest_route'}
+        ],
+        [
+            {path: '/a/route', method: 'GET', scheme: 'ftp'},
+            null
+        ],
+        [
             {path: '/a/rote', method: 'GET'},
             null
         ]
@@ -142,6 +150,7 @@ module.exports = data
             {
                 path: '/prefixed' + data[0].path,
                 method: data[0].method,
+                scheme: data[0].scheme,
                 host: data[0].host
             },
             data[1] ? {
@@ -169,6 +178,7 @@ module.exports = data
                 {
                     path: correctSample[0].path.replace('/en/', '/ru/'),
                     method: correctSample[0].method,
+                    scheme: correctSample[0].scheme,
                     host: correctSample[0].host
                 },
                 {
@@ -180,6 +190,7 @@ module.exports = data
                 {
                     path: correctSample[0].path.replace('/en/', '/null/'),
                     method: correctSample[0].method,
+                    scheme: correctSample[0].scheme,
                     host: correctSample[0].host
                 },
                 null
@@ -202,6 +213,7 @@ module.exports = data
             {
                 path: '/en' + data[0].path,
                 method: data[0].method,
+                scheme: data[0].scheme,
                 host: data[0].host
             },
             data[1] ? {

@@ -110,11 +110,11 @@ var data = [
     [
         [
             {id: 'route_with_host'},
-            '//m.example.com/a'
+            'http://m.example.com/a'
         ],
         [
             {id: 'route_with_host', parameters: {sub: 'mobile'}},
-            '//mobile.example.com/a'
+            'http://mobile.example.com/a'
         ],
         [
             {id: 'route_with_host', parameters: {sub: 'zxc'}}
@@ -132,7 +132,7 @@ module.exports = data
                 id: 'prefixed_' + data[0].id,
                 parameters: data[0].parameters
             },
-            data[1] ? !data[1].indexOf('//') ? data[1].replace('.com', '.com/prefixed') : '/prefixed' + data[1] : data[1]
+            data[1] ? !data[1].indexOf('http://') ? data[1].replace('.com', '.com/prefixed') : '/prefixed' + data[1] : data[1]
         ];
     }))
     .concat(data.map(function prefix (data) {
@@ -156,6 +156,6 @@ module.exports = data
                 id: 'prefixed_with_locale_' + data[0].id,
                 parameters: parametersWithEnLocale
             },
-            data[1] ? !data[1].indexOf('//') ? data[1].replace('.com', '.com/en') : '/en' + data[1] : data[1]
+            data[1] ? !data[1].indexOf('http://') ? data[1].replace('.com', '.com/en') : '/en' + data[1] : data[1]
         ];
     }));
