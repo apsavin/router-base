@@ -6,10 +6,10 @@ It's abstract and knows nothing about http. It's just matches and generates urls
 
 Router supports:
 
-    1. [node.js](http://nodejs.org) modules,
-    2. [requirejs](http://requirejs.org) modules
-    3. and, of course, awesome [ym](https://github.com/ymaps/modules) modules.
-    4. You can just use the `<script>` tag also, RouterBase will export the global variable then.
+1. [node.js](http://nodejs.org) modules,
+2. [requirejs](http://requirejs.org) modules
+3. and, of course, awesome [ym](https://github.com/ymaps/modules) modules.
+4. You can just use the `<script>` tag also, RouterBase will export the global variable then.
 
 ##How to use it?
 
