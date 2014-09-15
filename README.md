@@ -1,5 +1,7 @@
 Base router for your JS framework or frameworkless app
 
+[![NPM version](https://badge.fury.io/js/router-base.svg)](http://badge.fury.io/js/router-base) [![Bower version](https://badge.fury.io/bo/router-base.svg)](http://badge.fury.io/bo/router-base)
+
 It's abstract and knows nothing about http. It's just matches and generates urls.
 
 ##How to include it in my app or framework?
@@ -10,6 +12,8 @@ Router supports:
 2. [requirejs](http://requirejs.org) modules
 3. and, of course, awesome [ym](https://github.com/ymaps/modules) modules.
 4. You can just use the `<script>` tag also, RouterBase will export the global variable then.
+
+You can install it with npm or bower.
 
 ##How to use it?
 
