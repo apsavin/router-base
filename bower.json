@@ -1,0 +1,19 @@
+{
+  "name": "router-base",
+  "version": "0.1.0",
+  "description": "javascript abstract, node.js and client-side router, inspired by symfony router",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apsavin/router-base.git"
+  },
+  "bugs": "https://github.com/apsavin/router-base/issues",
+  "ignore": [
+    "node_modules"
+  ],
+  "authors": [
+    "Alexander Savin <box.for.postman@gmail.com>"
+  ],
+  "keywords": [
+      "router", "abstract", "symfony"
+  ]
+}
