@@ -13,7 +13,17 @@ Router supports:
 3. and, of course, awesome [ym](https://github.com/ymaps/modules) modules.
 4. You can just use the `<script>` tag also, RouterBase will export the global variable then.
 
-You can install it with npm or bower.
+You can install it with npm:
+
+```bash
+$ npm install router-base
+```
+
+or bower:
+
+```bash
+$ bower install router-base
+```
 
 ##How to use it?
 
