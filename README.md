@@ -53,10 +53,10 @@ var myRouter = new RouterBase({
 });
 
 // You can generate routes by id:
-myRoute.generate('simplest_route'); // '/a/route'
+myRouter.generate('simplest_route'); // '/a/route'
 
 //You can find a route by path and method:
-myRoute.match({path: '/a/route', method: 'GET'}); // {id: 'simplest_route'}
+myRouter.match({path: '/a/route', method: 'GET'}); // {id: 'simplest_route'}
 ```
 
 ###Beautiful urls examples
@@ -68,12 +68,12 @@ var myRoutes = [{
     path: '/some/path/{parameter}'
 }];
 
-myRoute.generate('route_with_parameter_in_path'); // will throw an Error, because parameter is needed for the route
-myRoute.generate('route_with_parameter_in_path', {parameter: 1}); // '/some/path/1'
-myRoute.generate('route_with_parameter_in_path', {parameter: 'value'}); // '/some/path/value'
+myRouter.generate('route_with_parameter_in_path'); // will throw an Error, because parameter is needed for the route
+myRouter.generate('route_with_parameter_in_path', {parameter: 1}); // '/some/path/1'
+myRouter.generate('route_with_parameter_in_path', {parameter: 'value'}); // '/some/path/value'
 
-myRoute.match({path: '/some/path/', method: 'GET'}); // null
-myRoute.match({path: '/some/path/to', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 'to'}}
+myRouter.match({path: '/some/path/', method: 'GET'}); // null
+myRouter.match({path: '/some/path/to', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 'to'}}
 ```
 ####Optional parameters in paths
 ```javascript
@@ -83,12 +83,12 @@ var myRoutes = [{
     defaults: {parameter: 1}
 }];
 
-myRoute.generate('route_with_parameter_in_path'); // '/some/path'
-myRoute.generate('route_with_parameter_in_path', {parameter: 1}); // '/some/path/1'
-myRoute.generate('route_with_parameter_in_path', {parameter: 'value'}); // '/some/path/value'
+myRouter.generate('route_with_parameter_in_path'); // '/some/path'
+myRouter.generate('route_with_parameter_in_path', {parameter: 1}); // '/some/path/1'
+myRouter.generate('route_with_parameter_in_path', {parameter: 'value'}); // '/some/path/value'
 
-myRoute.match({path: '/some/path', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 1}}
-myRoute.match({path: '/some/path/to', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 'to'}}
+myRouter.match({path: '/some/path', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 1}}
+myRouter.match({path: '/some/path/to', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 'to'}}
 ```
 ####Restricted parameters in paths
 ```javascript
@@ -99,12 +99,12 @@ var myRoutes = [{
     requirements: {parameter: '\\d+'}
 }];
 
-myRoute.generate('route_with_parameter_in_path'); // '/some/path'
-myRoute.generate('route_with_parameter_in_path', {parameter: 1}); // '/some/path/1'
-myRoute.generate('route_with_parameter_in_path', {parameter: 'value'}); // throws an Error, because parameter is not numeric
+myRouter.generate('route_with_parameter_in_path'); // '/some/path'
+myRouter.generate('route_with_parameter_in_path', {parameter: 1}); // '/some/path/1'
+myRouter.generate('route_with_parameter_in_path', {parameter: 'value'}); // throws an Error, because parameter is not numeric
 
-myRoute.match({path: '/some/path', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 1}}
-myRoute.match({path: '/some/path/to', method: 'GET'}); // null
+myRouter.match({path: '/some/path', method: 'GET'}); // {id: 'route_with_parameter_in_path', parameters: {parameter: 1}}
+myRouter.match({path: '/some/path/to', method: 'GET'}); // null
 ```
 
 ##All possible routes parameters
