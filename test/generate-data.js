@@ -119,6 +119,15 @@ var data = [
         [
             {id: 'route_with_host', parameters: {sub: 'zxc'}}
         ]
+    ],
+    [
+        [
+            {id: 'route_without_delimiter', parameters: {parameter1: 1, parameter2: 'x'}},
+            '/l/1x'
+        ],
+        [
+            {id: 'route_without_delimiter', parameters: {parameter1: 1, parameter2: '-'}}
+        ]
     ]
 ];
 

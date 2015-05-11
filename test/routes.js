@@ -61,6 +61,11 @@ var routes = [
         host: '{sub}.example.com',
         defaults: {sub: 'm'},
         requirements: {sub: 'm|mobile'}
+    },
+    {
+        id: 'route_without_delimiter',
+        path: '/l/{parameter1}{parameter2}',
+        requirements: {parameter1: "\\d+", parameter2: "[a-z]+"}
     }
 ];
 

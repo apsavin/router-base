@@ -138,6 +138,16 @@ var data = [
             {path: '/a', method: 'GET', host: 'null.example.com'},
             null
         ]
+    ],
+    [
+        [
+            {path: '/l/1x', method: 'GET'},
+            {id: 'route_without_delimiter', parameters: {parameter1: '1', parameter2: 'x'}}
+        ],
+        [
+            {path: '/l/1-', method: 'GET'},
+            null
+        ]
     ]
 ];
 
