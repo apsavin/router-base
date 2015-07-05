@@ -1,7 +1,7 @@
 var cloneDeep = require('lodash.clonedeep');
 
 /**
- * @type {Array.<RouteDefinition>}
+ * @type {Array.<RouteDefinition|RoutesDefinition>}
  */
 var routes = [
     {
