@@ -28,19 +28,19 @@ var data = [
     [
         [
             {path: '/c/5', method: 'GET'},
-            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5}}
+            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: '5'}}
         ],
         [
             {path: '/c/5?d=6', method: 'GET'},
-            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5, d: 6}}
+            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: '5', d: '6'}}
         ],
         [
             {path: '/c/5?d=6&parameter=7', method: 'GET'},
-            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5, d: 6}}
+            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: '5', d: '6'}}
         ],
         [
             {path: '/c/5', method: 'POST'},
-            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: 5}}
+            {id: 'route_with_required_parameter', parameters: {action: 'defaultAction', parameter: '5'}}
         ],
         [
             {path: '/c/5', method: 'PUT'},
@@ -54,17 +54,17 @@ var data = [
     [
         [
             {path: '/d/5', method: 'GET'},
-            {id: 'route_with_not_required_parameter', parameters: {parameter: 5}}
+            {id: 'route_with_not_required_parameter', parameters: {parameter: '5'}}
         ],
         [
             {path: '/d', method: 'GET'},
-            {id: 'route_with_not_required_parameter', parameters: {parameter: 0}}
+            {id: 'route_with_not_required_parameter', parameters: {parameter: '0'}}
         ]
     ],
     [
         [
             {path: '/e/1/2', method: 'GET'},
-            {id: 'route_with_required_parameters', parameters: {parameter1: 1, parameter2: 2}}
+            {id: 'route_with_required_parameters', parameters: {parameter1: '1', parameter2: '2'}}
         ],
         [
             {path: '/e/a/b', method: 'GET'},
@@ -78,20 +78,20 @@ var data = [
     [
         [
             {path: '/f/1/b', method: 'GET'},
-            {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: 1, parameter2: 'b'}}
+            {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: '1', parameter2: 'b'}}
         ],
         [
             {path: '/f/1', method: 'GET'},
-            {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: 1, parameter2: 2}}
+            {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: '1', parameter2: '2'}}
         ],
         [
             {path: '/f', method: 'GET'},
-            {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: 1, parameter2: 2}}
+            {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: '1', parameter2: '2'}}
         ]
     ],
     [
         {path: '/g/2/f', method: 'GET'},
-        {id: 'bad_route_with_required_parameter_after_not_required_parameter', parameters: {action: 'defaultAction', parameter1: 2, parameter2: 'f'}}
+        {id: 'bad_route_with_required_parameter_after_not_required_parameter', parameters: {action: 'defaultAction', parameter1: '2', parameter2: 'f'}}
     ],
     [
         {path: '/h/p/file.html', method: 'GET'},
@@ -114,11 +114,11 @@ var data = [
     [
         [
             {path: '/k/3', method: 'GET'},
-            { id: 'route_with_not_required_numeric_parameter', parameters: {action: 'defaultAction', parameter: 3}}
+            { id: 'route_with_not_required_numeric_parameter', parameters: {action: 'defaultAction', parameter: '3'}}
         ],
         [
             {path: '/k', method: 'GET'},
-            { id: 'route_with_not_required_numeric_parameter', parameters: {action: 'defaultAction', parameter: 0}}
+            { id: 'route_with_not_required_numeric_parameter', parameters: {action: 'defaultAction', parameter: '0'}}
         ],
         [
             {path: '/k/sdf', method: 'GET'},

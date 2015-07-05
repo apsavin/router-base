@@ -1,28 +1,36 @@
 {
-    "name": "router-base",
-    "version": "0.1.1",
-    "engines": {
-        "node": ">=0.10"
-    },
-    "author": "Alexander Savin",
-    "main": "./lib/router-base.js",
-    "description": "javascript abstract, node.js and client-side router, inspired by symfony router",
-    "bugs": {
-        "url": "https://github.com/apsavin/router-base/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/apsavin/router-base.git"
-    },
-    "scripts": {
-        "test": "node ./node_modules/.bin/vows --spec"
-    },
-    "keywords": [
-        "router", "abstract", "symfony"
-    ],
-    "license": "MIT",
-    "devDependencies": {
-        "vows": "^0.7.0",
-        "lodash.clonedeep": "^2.4.1"
-    }
+  "name": "router-base",
+  "version": "0.1.1",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "author": "Alexander Savin",
+  "main": "./lib/router-base.js",
+  "description": "javascript abstract, node.js and client-side router, inspired by symfony router",
+  "bugs": {
+    "url": "https://github.com/apsavin/router-base/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apsavin/router-base.git"
+  },
+  "scripts": {
+    "test": "node_modules/mocha-oop-wrapper/node_modules/.bin/mocha test",
+    "coverage": "node_modules/.bin/istanbul cover --report=html --dir=/tmp/router-base-coverage node_modules/mocha-oop-wrapper/node_modules/.bin/_mocha -- test/ && open /tmp/router-base-coverage/index.html",
+    "coveralls": "node_modules/.bin/istanbul cover --format=lcovonly --dir=/tmp/router-base-coverage node_modules/mocha-oop-wrapper/node_modules/.bin/_mocha -- test/ && cat /tmp/router-base-coverage/lcov.info | ./node_modules/.bin/coveralls"
+  },
+  "keywords": [
+    "router",
+    "abstract",
+    "symfony"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.17",
+    "lodash.assign": "^3.2.0",
+    "lodash.clonedeep": "^2.4.1",
+    "mocha-oop-wrapper": "^1.1.0"
+  }
 }
