@@ -1,6 +1,6 @@
 Base router for your JS framework or frameworkless app
 
-[![Build Status](https://travis-ci.org/apsavin/router-base.svg?branch=master)](https://travis-ci.org/apsavin/router-base) [![NPM version](https://badge.fury.io/js/router-base.svg)](http://badge.fury.io/js/router-base) [![Bower version](https://badge.fury.io/bo/router-base.svg)](http://badge.fury.io/bo/router-base)
+[![Build Status](https://travis-ci.org/apsavin/router-base.svg?branch=master)](https://travis-ci.org/apsavin/router-base) [![Coverage Status](https://coveralls.io/repos/apsavin/router-base/badge.svg)](https://coveralls.io/r/apsavin/router-base) [![NPM version](https://badge.fury.io/js/router-base.svg)](http://badge.fury.io/js/router-base) [![Bower version](https://badge.fury.io/bo/router-base.svg)](http://badge.fury.io/bo/router-base)
 
 It's abstract and knows nothing about http. It's just matches and generates urls.
 
