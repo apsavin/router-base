@@ -22,7 +22,7 @@ var routes = [
     {
         id: 'route_with_not_required_parameter',
         path: '/d/{parameter}',
-        defaults: {parameter: 0}
+        defaults: {parameter: '0'}
     },
     {
         id: 'route_with_required_parameters',
@@ -31,12 +31,12 @@ var routes = [
     {
         id: 'route_with_not_required_parameters',
         path: '/f/{parameter1}/{parameter2}',
-        defaults: {action: 'defaultAction', parameter1: 1, parameter2: 2}
+        defaults: {action: 'defaultAction', parameter1: '1', parameter2: '2'}
     },
     {
         id: 'bad_route_with_required_parameter_after_not_required_parameter',
         path: '/g/{parameter1}/{parameter2}',
-        defaults: {action: 'defaultAction', parameter1: 1}
+        defaults: {action: 'defaultAction', parameter1: '1'}
     },
     {
         id: 'route_with_point_as_parameters_delimiter',
@@ -52,7 +52,7 @@ var routes = [
     {
         id: 'route_with_not_required_numeric_parameter',
         path: '/k/{parameter}',
-        defaults: {action: 'defaultAction', parameter: 0},
+        defaults: {action: 'defaultAction', parameter: '0'},
         requirements: {parameter: "\\d+"}
     },
     {
@@ -60,6 +60,12 @@ var routes = [
         path: '/a',
         host: '{sub}.example.com',
         defaults: {sub: 'm'},
+        requirements: {sub: 'm|mobile'}
+    },
+    {
+        id: 'route_with_host_without_defaults',
+        path: '/m',
+        host: '{sub}.example.com',
         requirements: {sub: 'm|mobile'}
     },
     {
@@ -94,6 +100,33 @@ routes.push(
         requirements: {
             locale: 'en|ru'
         }
+    },
+    {
+        host: 'example1.com',
+        prefix: '/prefix',
+        routes: routes.map(function (route) {
+            /**
+             * @type {RouteDefinition}
+             */
+            var clone = cloneDeep(route);
+            clone.id = 'custom_property_' + route.id;
+            return clone;
+        }),
+        customProperty: 'customValue'
+    },
+    {
+        prefix: '/first_prefix',
+        routes: [{
+            prefix: '/second_prefix',
+            routes: routes.map(function (route) {
+                /**
+                 * @type {RouteDefinition}
+                 */
+                var clone = cloneDeep(route);
+                clone.id = 'double_prefixed_' + route.id;
+                return clone;
+            })
+        }]
     });
 
 module.exports = routes;

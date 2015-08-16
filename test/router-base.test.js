@@ -53,38 +53,31 @@ RouterBaseTest.prototype = assign(Object.create(mochaOOPWrapper), /** @lends Rou
      * @returns {Object.<Function>}
      */
     _checkMethod: function (parameters, methodTestGenerator) {
-        var id = 0,
-            route;
-
         function generateMethod (parameter) {
             if (Array.isArray(parameter[0])) {
                 parameter.forEach(generateMethod, this);
                 return;
             }
 
-            this.it(route.id + '_' + (id++), methodTestGenerator.bind(this, parameter[0], parameter[1]));
+            var message = 'should ' +
+                (parameter[1] === undefined ? 'throw' : 'return ' + JSON.stringify(parameter[1]))
+                + ' when input is ' + JSON.stringify(parameter[0]);
+
+            this.it(message, methodTestGenerator.bind(this, parameter[0], parameter[1]));
         }
 
-        parameters.forEach(function (parameter, i) {
-            var routesCount = routes.length - 2;
-            if (i < routesCount) {
-                route = routes[i];
-            } else if (i < routesCount * 2) {
-                route = routes[routesCount].routes[i - routesCount];
-            } else {
-                route = routes[routesCount + 1].routes[i - routesCount * 2];
-            }
-            id = 0;
+        parameters.forEach(function (parameter) {
             generateMethod.call(this, parameter);
         }, this);
     },
 
     /**
      * @param {{path: String, method: String}} input
-     * @param {{id: String, parameters: ?Object.<String>}} output
+     * @param {{id: String, parameters: ?Object.<String>, definition: Object}} output
      */
     _checkMatchRoute: function (input, output) {
-        var matchers = this._router.match(input);
+        var matchers = this._router.match(input),
+            key;
         if (output === null) {
             expect(matchers).to.be.null;
             return;
@@ -94,9 +87,27 @@ RouterBaseTest.prototype = assign(Object.create(mochaOOPWrapper), /** @lends Rou
         expect(matchers.id).to.equal(output.id);
 
         if (output.parameters) {
-            for (var key in output.parameters) {
+            for (key in output.parameters) {
                 if (output.parameters.hasOwnProperty(key)) {
                     expect(output.parameters[key]).to.equal(matchers.parameters[key]);
+                }
+            }
+        }
+        for (key in matchers.definition) {
+            if (matchers.definition.hasOwnProperty(key)) {
+                if (typeof output.definition[key] === 'undefined') {
+                    continue;
+                }
+                if (typeof matchers.definition[key] === 'object') {
+                    if (Array.isArray(matchers.definition[key])) {
+                        matchers.definition[key].forEach(function (item, i) {
+                           expect(output.definition[key][i]).to.eq(item);
+                        });
+                    } else {
+                        expect(matchers.definition[key]).to.include(output.definition[key]);
+                    }
+                } else {
+                    expect(matchers.definition[key]).to.eq(output.definition[key]);
                 }
             }
         }

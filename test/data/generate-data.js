@@ -1,5 +1,8 @@
 var data = [
     [
+        {id: 'route_that_not_exists'}
+    ],
+    [
         [
             {id: 'simplest_route'},
             '/a/route'
@@ -122,6 +125,18 @@ var data = [
     ],
     [
         [
+            {id: 'route_with_host_without_defaults'}
+        ],
+        [
+            {id: 'route_with_host_without_defaults', parameters: {sub: 'mobile'}},
+            'http://mobile.example.com/m'
+        ],
+        [
+            {id: 'route_with_host_without_defaults', parameters: {sub: 'zxc'}}
+        ]
+    ],
+    [
+        [
             {id: 'route_without_delimiter', parameters: {parameter1: 1, parameter2: 'x'}},
             '/l/1x'
         ],
@@ -145,11 +160,11 @@ module.exports = data
         ];
     }))
     .concat(data.map(function prefix (data) {
-        var key;
         if (Array.isArray(data[0])) {
             return data.map(prefix);
         }
-        var parametersWithEnLocale;
+        var key,
+            parametersWithEnLocale;
         if (data[0]) {
             var parameters = data[0].parameters;
             parametersWithEnLocale = {};
@@ -166,5 +181,32 @@ module.exports = data
                 parameters: parametersWithEnLocale
             },
             data[1] ? !data[1].indexOf('http://') ? data[1].replace('.com', '.com/en') : '/en' + data[1] : data[1]
+        ];
+    }))
+    .concat(data.map(function prefix (data) {
+        if (Array.isArray(data[0])) {
+            return data.map(prefix);
+        }
+
+        return [
+            {
+                id: 'custom_property_' + data[0].id,
+                parameters: data[0].parameters
+            },
+            data[1] ?
+                !data[1].indexOf('http://') ? data[1].replace('.com', '.com/prefix') : 'http://example1.com/prefix' + data[1] :
+                data[1]
+        ];
+    }))
+    .concat(data.map(function doublePrefix (data) {
+        if (Array.isArray(data[0])) {
+            return data.map(doublePrefix);
+        }
+        return [
+            {
+                id: 'double_prefixed_' + data[0].id,
+                parameters: data[0].parameters
+            },
+            data[1] ? !data[1].indexOf('http://') ? data[1].replace('.com', '.com/first_prefix/second_prefix') : '/first_prefix/second_prefix' + data[1] : data[1]
         ];
     }));
