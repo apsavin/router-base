@@ -15,9 +15,9 @@
     "url": "https://github.com/apsavin/router-base.git"
   },
   "scripts": {
-    "test": "node_modules/mocha-oop-wrapper/node_modules/.bin/mocha test",
-    "coverage": "node_modules/.bin/istanbul cover --report=html --dir=/tmp/router-base-coverage node_modules/mocha-oop-wrapper/node_modules/.bin/_mocha -- test/ && open /tmp/router-base-coverage/index.html",
-    "coveralls": "node_modules/.bin/istanbul cover --format=lcovonly --dir=/tmp/router-base-coverage node_modules/mocha-oop-wrapper/node_modules/.bin/_mocha -- test/ && cat /tmp/router-base-coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "test": "mocha test",
+    "coverage": "istanbul cover --report=html --dir=/tmp/router-base-coverage _mocha -- test/ && open /tmp/router-base-coverage/index.html",
+    "coveralls": "istanbul cover --format=lcovonly --dir=/tmp/router-base-coverage _mocha -- test/ && cat /tmp/router-base-coverage/lcov.info | coveralls"
   },
   "keywords": [
     "router",
@@ -31,6 +31,7 @@
     "istanbul": "^0.3.17",
     "lodash.assign": "^3.2.0",
     "lodash.clonedeep": "^2.4.1",
+    "mocha": "^2.3.3",
     "mocha-oop-wrapper": "^1.1.0"
   }
 }

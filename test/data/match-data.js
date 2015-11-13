@@ -12,6 +12,10 @@ var data = [
             {id: 'simplest_route', parameters: {param: 'value'}, definition: routes[0]}
         ],
         [
+            {path: '/a/route?a=%D0%B0&b=%26', method: 'GET'},
+            {id: 'simplest_route', parameters: {a: 'а', b: '&'}, definition: routes[0]}
+        ],
+        [
             {path: '/a/route', method: 'GET', scheme: 'http'},
             {id: 'simplest_route', definition: routes[0]}
         ],
@@ -90,6 +94,10 @@ var data = [
         [
             {path: '/f', method: 'GET'},
             {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: '1', parameter2: '2'}, definition: routes[5]}
+        ],
+        [
+            {path: '/f/%D0%B0/%26', method: 'GET'},
+            {id: 'route_with_not_required_parameters', parameters: {action: 'defaultAction', parameter1: 'а', parameter2: '&'}, definition: routes[5]}
         ]
     ],
     [

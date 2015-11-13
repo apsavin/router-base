@@ -14,6 +14,10 @@ var data = [
         [
             {id: 'simplest_route', parameters: {a: 1, b: 'sdf'}},
             '/a/route?a=1&b=sdf'
+        ],
+        [
+            {id: 'simplest_route', parameters: {a: 'а', b: '&'}},
+            '/a/route?a=%D0%B0&b=%26'
         ]
     ],
     [
@@ -68,6 +72,10 @@ var data = [
         [
             {id: 'route_with_not_required_parameters', parameters: {parameter1: 3, parameter2: 3}},
             '/f/3/3'
+        ],
+        [
+            {id: 'route_with_not_required_parameters', parameters: {parameter1: 'а', parameter2: '&'}},
+            '/f/%D0%B0/%26'
         ]
     ],
     [
