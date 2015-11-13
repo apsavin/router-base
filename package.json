@@ -21,6 +21,8 @@
   },
   "keywords": [
     "router",
+    "routing",
+    "isomorphic",
     "abstract",
     "symfony"
   ],
