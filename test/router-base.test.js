@@ -31,6 +31,7 @@ RouterBaseTest.prototype = assign(Object.create(mochaOOPWrapper), /** @lends Rou
 
         this.describe('match method', this._checkMatchMethod);
         this.describe('generate method', this._checkGenerateMethod);
+        this.describe('getRouteInfo method', this._checkGetRouteInfoMethod);
     },
 
     /**
@@ -48,12 +49,28 @@ RouterBaseTest.prototype = assign(Object.create(mochaOOPWrapper), /** @lends Rou
     },
 
     /**
+     * @private
+     */
+    _checkGetRouteInfoMethod: function () {
+        this._checkMethod(require('./data/getRouteInfo-data'), this._checkGetRouteInfo);
+
+        this.it('should not allow to modify internal data', function () {
+            var info = this._router.getRouteInfo('simplest_route');
+            delete info.id;
+            info.x = 'x';
+            var unmodifiedInfo = this._router.getRouteInfo('simplest_route');
+            expect(unmodifiedInfo.id).to.be.eq('simplest_route');
+            expect(unmodifiedInfo.x).to.be.undefined;
+        });
+    },
+
+    /**
      * @param {Array.<Array.<Object>>} parameters
      * @param {Function} methodTestGenerator
      * @returns {Object.<Function>}
      */
     _checkMethod: function (parameters, methodTestGenerator) {
-        function generateMethod (parameter) {
+        function generateMethod(parameter) {
             if (Array.isArray(parameter[0])) {
                 parameter.forEach(generateMethod, this);
                 return;
@@ -101,7 +118,7 @@ RouterBaseTest.prototype = assign(Object.create(mochaOOPWrapper), /** @lends Rou
                 if (typeof matchers.definition[key] === 'object') {
                     if (Array.isArray(matchers.definition[key])) {
                         matchers.definition[key].forEach(function (item, i) {
-                           expect(output.definition[key][i]).to.eq(item);
+                            expect(output.definition[key][i]).to.eq(item);
                         });
                     } else {
                         expect(matchers.definition[key]).to.include(output.definition[key]);
@@ -127,6 +144,24 @@ RouterBaseTest.prototype = assign(Object.create(mochaOOPWrapper), /** @lends Rou
                 expect(output).to.be.undefined;
             }
         }
+    },
+
+    /**
+     * @param {?String} input
+     * @param {?RouteDefinitionParsed} output
+     * @private
+     */
+    _checkGetRouteInfo: function (input, output) {
+        var info;
+        try {
+            info = this._router.getRouteInfo(input);
+        } catch (e) {
+            expect(e.message).to.be.eq('No such route: ' + input);
+            expect(output).to.be.undefined;
+            return;
+        }
+
+        expect(info).to.be.deep.equal(output);
     }
 });
 

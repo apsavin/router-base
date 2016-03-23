@@ -56,7 +56,7 @@ var myRouter = new RouterBase({
 myRouter.generate('simplest_route'); 
 // returns '/a/route'
 
-//You can find a route by path and method:
+// You can find a route by path and method:
 myRouter.match({path: '/a/route', method: 'GET'}); 
 // returns {id: 'simplest_route', parameters: {}, definition: { id: 'simplest_route',
                                                                    path: '/a/route',
@@ -66,6 +66,10 @@ myRouter.match({path: '/a/route', method: 'GET'});
                                                                    methods: [ 'GET', 'POST', 'PUT', 'DELETE' ],
                                                                    schemes: [ 'http', 'https' ] } }
 }
+
+// You can get full info about a route by id:
+myRouter.getRouteInfo('simplest_route');
+// for answer see [tests](https://github.com/apsavin/router-base/blob/master/test/data/getRouteInfo-data.js#L4-L41)
 ```
 
 You can use access to the `definition` if you want to set additional fields to the route.
