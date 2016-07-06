@@ -1,6 +1,5 @@
 {
   "name": "router-base",
-  "version": "1.0.0",
   "description": "javascript abstract, node.js and client-side router, inspired by symfony router",
   "repository": {
     "type": "git",
